@@ -1,6 +1,13 @@
 <script>
+import MapImage from '../../../../assets/mapa.png';
+
 export default {
   name: 'MapCard',
+  data() {
+    return {
+      mapImage: MapImage
+    }
+  }
 }
 </script>
 <template>
@@ -8,7 +15,7 @@ export default {
     <div class="search-bar">
       <input type="search" placeholder="Buscar..." />
     </div>
-    <img class="map-image" src="../../../assets/mapa.png" alt="Mapa"/>
+    <img class="map-image" :src="mapImage" alt="Mapa"/>
   </div>
 </template>
 
@@ -23,15 +30,14 @@ export default {
 .search-bar {
   margin-bottom: 15px;
 }
+.search-bar input[type="search"] {
+  width: 100%;
+}
 
 .map-image {
   width: 100%;
   border: 1px solid #000000;
   border-radius: 8px;
-}
-
-.search-bar input[type="search"] {
-  width: 100%;
 }
 
 </style>
