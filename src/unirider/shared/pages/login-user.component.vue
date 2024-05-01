@@ -23,7 +23,7 @@ export default {
 <template>
   <div>
     <div class="container">
-      <img src="../.././img/logoUniRider.png" class="logo-UniRider">
+      <img src="../../../img/logoUniRider.png" class="logo-UniRider" alt="LogoUniRider">
       <h1 class="h1-login">Bienvenido a UniRider</h1>
       <form @submit.prevent="onSubmitLogin">
         <div>
