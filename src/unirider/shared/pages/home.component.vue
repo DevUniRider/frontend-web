@@ -3,9 +3,11 @@
 import AppUniversityCard from "../components/app-university-card/app-university-card.component.vue";
 import AppInformationCard from "../components/app-information-card/app-information-card.component.vue";
 import AppDestinosCard from "../components/app-destinos-card/app-destinos-card.component.vue";
+import ToolbarComponent from "../../public/toolbar.component.vue";
 </script>
 
 <template>
+  <toolbar-component/>
   <div class="cards">
     <div>
       <AppInformationCard/>
