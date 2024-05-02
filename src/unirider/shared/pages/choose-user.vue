@@ -14,6 +14,10 @@ export default {
       } else {
         console.log(`No se seleccionó ningún archivo para el índice ${index}`);
       }
+    },
+    onVerifyAccount() {
+      console.log("Login user");
+      this.$router.push('/home');
     }
   }
 }
@@ -23,31 +27,31 @@ export default {
   <div class="container">
     <div class="header">
       <div>
-        <img src="src\assets\logoUniRider.png" class="logoo">
+        <img src="../../../img/logoUniRider.png" class="logoo">
         <h1 class="title">Bienvenidos a UniRider nuevo socio: {{nombre}}</h1>
         <h2>Solo falta ingresar sus datos. Siga las indicaciones y podrá comenzar.</h2>
       </div>
     </div>
     <div class="image-container">
       <h3>Licencia de conducir</h3>
-      <img src="src\assets\licencia.png" class="image-preview">
+      <img src="../../../assets/licencia.png" class="image-preview">
       <input type="file" @change="handleFileChange(1)" accept="image/*">
     </div>
     <div class="image-container">
       <h3>Seguro vehicular</h3>
-      <img src="src\assets\soat.jpg" class="image-preview">
+      <img src="../../../assets/soat.jpg" class="image-preview">
       <input type="file" @change="handleFileChange(2)" accept="image/*"> <!-- Segundo archivo -->
     </div>
     <div class="image-container">
       <h3>Carnet universitario</h3>
-      <img src="src\assets\carnet.png" class="image-preview">
+      <img src="../../../assets/carnet.png" class="image-preview">
       <input type="file" @change="handleFileChange(3)" accept="image/*"> <!-- Tercer archivo -->
     </div>
     <div>
       <h2 class="content">Seleccionar los archivos indicados</h2>
     </div>
-    <div class="centered">
-      <button class="btn-salir">Salir</button>
+    <div @click.prevent="onVerifyAccount" class="centered">
+      <button class="btn-salir">Confirmar</button>
     </div>
   </div>
 </template>
