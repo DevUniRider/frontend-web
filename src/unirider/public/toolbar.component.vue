@@ -13,7 +13,7 @@ export default {
   <nav class="toolbar">
     <ul>
       <h2 class="start"><router-link to="/home">UniRider</router-link></h2>
-      <li><router-link to="/service">Servicio</router-link></li>
+      <li><router-link to="/services">Servicio</router-link></li>
       <li><router-link to="/plans">Planes</router-link></li>
       <li><router-link to="/maps">Mapa</router-link></li>
       <li><router-link to="/reserve">Reserva</router-link></li>

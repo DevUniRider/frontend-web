@@ -6,6 +6,7 @@ import ToolbarComponent from "../unirider/public/toolbar.component.vue";
 import Home from "../unirider/shared/pages/home.component.vue";
 import RegisterUser from "../unirider/shared/pages/register-user.component.vue";
 import ChooseUser from "../unirider/shared/pages/choose-user.vue";
+import UniRiderServices from "../unirider/shared/pages/UniRider-Services.vue";
 const routes = [
     { path: '/', component: LoginUser },
     { path: '/create', component: RegisterUser },
@@ -14,6 +15,7 @@ const routes = [
     { path: '/main', name:'main', component: ToolbarComponent },
     { path: '/maps', component: MapsPage },
     { path: '/qualify', component: QualifyCard },
+    { path: '/services', component: UniRiderServices },
 
 
 ]
