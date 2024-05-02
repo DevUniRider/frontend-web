@@ -1,3 +1,10 @@
+<script setup>
+import ToolbarComponent from "../../public/toolbar.component.vue";
+
+
+</script>
+
+
 <template>
   <div class="container">
     <toolbar-component class="toolbar"></toolbar-component>
@@ -27,15 +34,6 @@
     </div>
   </div>
 </template>
-
-<script>
-import ToolbarComponent from "../../public/toolbar.component.vue";
-
-export default {
-  name: 'UniRiderServices',
-  components: {ToolbarComponent},
-};
-</script>
 
 <style>
 .toolbar {

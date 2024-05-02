@@ -7,6 +7,8 @@ import Home from "../unirider/shared/pages/home.component.vue";
 import RegisterUser from "../unirider/shared/pages/register-user.component.vue";
 import ChooseUser from "../unirider/shared/pages/choose-user.vue";
 import UniRiderServices from "../unirider/shared/pages/UniRider-Services.vue";
+import SubscriptionCards from "../unirider/shared/pages/subscription-cards.component.vue";
+import RecordView from "../unirider/shared/pages/record-view.vue";
 const routes = [
     { path: '/', component: LoginUser },
     { path: '/create', component: RegisterUser },
@@ -16,6 +18,8 @@ const routes = [
     { path: '/maps', component: MapsPage },
     { path: '/qualify', component: QualifyCard },
     { path: '/services', component: UniRiderServices },
+    { path: '/plans', component: SubscriptionCards},
+    { path: '/reserve', component: RecordView},
 
 
 ]

@@ -1,9 +1,11 @@
 <script>
 import TravelRecordContainer from "../components/travel-record/travel-record-container.vue";
+import ToolbarComponent from "../../public/toolbar.component.vue";
 
 export default {
   name: 'RecordView',
   components: {
+    ToolbarComponent,
     TravelRecordContainer,
   },
   data() {
@@ -52,8 +54,9 @@ export default {
 
 <template>
   <div>
+    <toolbar-component/>
     <div class="app-container">
-      <img src="src\assets\logoUniRider.png" class="logoo">
+      <img src="../../../img/logoUniRider.png" class="logoo" alt="LogoUniRider">
       <div>
         <h1>Historial</h1>
       </div>
@@ -95,6 +98,7 @@ export default {
   height: auto; /* Permite que la altura se ajuste automáticamente según el ancho */
 
 }
+
 .btn-salir {
   background-color: #FF5733; /* Color de fondo */
   color: white; /* Color del texto */
