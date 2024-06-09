@@ -9,6 +9,7 @@ import ChooseUser from "../unirider/shared/pages/choose-user.vue";
 import UniRiderServices from "../unirider/shared/pages/UniRider-Services.vue";
 import SubscriptionCards from "../unirider/shared/pages/subscription-cards.component.vue";
 import RecordView from "../unirider/shared/pages/record-view.vue";
+import OtherPaymentMethodComponent from "../unirider/shared/components/other-payment-method-card/other-payment-method.component.vue";
 const routes = [
     { path: '/', component: LoginUser },
     { path: '/create', component: RegisterUser },
@@ -20,6 +21,7 @@ const routes = [
     { path: '/services', component: UniRiderServices },
     { path: '/plans', component: SubscriptionCards},
     { path: '/reserve', component: RecordView},
+    { path: '/OtherMethodpayment', component: OtherPaymentMethodComponent}
 
 
 ]

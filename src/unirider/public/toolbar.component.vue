@@ -11,39 +11,49 @@ export default {
 
 <template>
   <nav class="toolbar">
-    <ul>
+      <div class="logo">
       <h2 class="start"><router-link to="/home">UniRider</router-link></h2>
-      <li><router-link to="/services">Servicio</router-link></li>
-      <li><router-link to="/plans">Planes</router-link></li>
-      <li><router-link to="/maps">Mapa</router-link></li>
-      <li><router-link to="/reserve">Reserva</router-link></li>
-      <li><i class="fa fa-bell"></i></li> <!-- Icono de campana (notificaciones) -->
-      <li><img :src="userPhoto" alt=" "></li>
-    </ul>
+      </div>
+      <div class="nav-links">
+      <a><router-link to="/services">Servicio</router-link></a>
+      <a><router-link to="/plans">Planes</router-link></a>
+      <a><router-link to="/maps">Mapa</router-link></a>
+      <a><router-link to="/reserve">Reserva</router-link></a>
+      <a><i class="fa fa-bell"></i></a> <!-- Icono de campana (notificaciones) -->
+      <a><img :src="userPhoto" alt=" "></a>
+      </div>
   </nav>
 </template>
 
 <style>
 .toolbar {
+  margin-top: 0;
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-}
-.toolbar ul {
-  list-style-type: none;
+  background-color: #0c2232;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
 }
-.toolbar ul li {
-  margin-right: 7px;
+.nav-links a {
+  text-decoration: none;
+  margin: 0 10px;
+  font-size: 15px;
+}
+
+.nav-links a:hover {
+  text-decoration: underline;
 }
 
 .toolbar h2.start {
-  font-size: 1em; /* Ajusta el tamaño de la fuente al tamaño que desees */
+  font-size: 2em; /* Ajusta el tamaño de la fuente al tamaño que desees */
   margin: 0;
   padding: 0;
   margin-right: auto;
 }
+
 a {
   font-weight: 500;
   color: #f0f0f0;

@@ -24,6 +24,7 @@ import ToolbarComponent from "../../public/toolbar.component.vue";
 <style>
 body{
   background-color: #3F7AA4;
+  margin: 0;
 }
 
 

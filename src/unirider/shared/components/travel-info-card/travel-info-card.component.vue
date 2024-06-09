@@ -1,10 +1,27 @@
 <script>
 import AutoImage from '../../../../assets/auto.jpg';
+import OtherPaymentMethod from "../other-payment-method-card/other-payment-method.component.vue";
 export default {
   name: 'TravelInfoCard',
+  components: {
+    OtherPaymentMethod
+  },
   data() {
     return {
-      autoImage: AutoImage
+      autoImage: AutoImage,
+      selectedOption: 'Cash',
+      options: ['Cash', 'Yape/Plin', 'Otro Metodo'],
+      showOtherPaymentMethod: false
+    }
+  },
+  watch: {
+    selectedOption(newVal) {
+      this.$emit('request-trip', newVal);
+      if (newVal === 'Otro Metodo') {
+        this.showOtherPaymentMethod = true;
+      } else {
+        this.showOtherPaymentMethod = false;
+      }
     }
   }
 }
@@ -41,6 +58,21 @@ export default {
           <span class="star-icon">⭐</span>
         </td>
       </tr>
+    <tr>
+      <td colspan="2">
+        <div class="payment-method">
+          <span>Método de Pago:</span>
+          <select v-model="selectedOption" class="styled-select">
+            <option v-for="option in options" :key="option" :value="option">{{ option }}</option>
+          </select>
+        </div>
+      </td>
+    </tr>
+    <tr v-if="showOtherPaymentMethodModal">
+      <td colspan="2">
+        <OtherPaymentMethod />
+      </td>
+    </tr>
     </table>
     <button class="request-trip-button">Solicitar viaje</button>
   </div>
@@ -78,5 +110,26 @@ export default {
   margin: 4px 2px;
   cursor: pointer;
   border-radius: 8px;
+}
+
+.payment-method {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.styled-select {
+  font-size: 16px;
+  width: 50%;
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  background-color: transparent;
+  appearance: none; /* This is to remove the default arrow of select element */
+}
+
+.styled-select:focus {
+  border-color: #007bff;
+  outline: none;
 }
 </style>

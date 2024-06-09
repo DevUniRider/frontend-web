@@ -1,19 +1,25 @@
 <script>
+import LogoUniRiderImage from '../../../../assets/logoUniRider.png';
 export default {
   name: 'AppInformationCard' ,
+  data(){
+    return {
+      logoUniRiderImage: LogoUniRiderImage
+    }
+  }
 }
 </script>
 
 <template>
-    <div class="card">
-      <h1>UniRider</h1>
-      <div class="infoCard">
-        <h3>Ofrecemos La Oportunidad De Viajar De Manera Eficiente A Un Precio Accesible.</h3>
-        <h3>Dile Adiós A Las Largas Esperas Y A Los Viajes Estresantes.</h3>
-        <Button>Contactanos</Button>
-      </div>
-      <img src="/src/assets/logoUniRider.png" alt="logoUniRider">
+  <div class="card">
+    <h1>UniRider</h1>
+    <div class="infoCard">
+      <h3>Ofrecemos La Oportunidad De Viajar De Manera Eficiente A Un Precio Accesible.</h3>
+      <h3>Dile Adiós A Las Largas Esperas Y A Los Viajes Estresantes.</h3>
+      <Button>Contactanos</Button>
     </div>
+    <img :src="logoUniRiderImage" alt="logoUniRider"/>
+  </div>
 </template>
 
 <style>
@@ -58,10 +64,12 @@ export default {
   background-color: #72e9e9;
 }
 
-.card img{
-  width: 180px;
-  height: 180px;
-  padding: 0 100px;
+.card img {
+  width: 50%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  padding: 40px;
 }
 
 </style>
