@@ -13,7 +13,7 @@ export default {
 <template>
   <div class="map-card">
     <div class="search-bar">
-      <input type="search" placeholder="Buscar..." />
+      <input type="search" placeholder="Buscar..."/>
     </div>
     <img class="map-image" :src="mapImage" alt="Mapa"/>
   </div>
@@ -30,6 +30,7 @@ export default {
 .search-bar {
   margin-bottom: 15px;
 }
+
 .search-bar input[type="search"] {
   width: 100%;
 }

@@ -23,6 +23,11 @@ export default {
         this.showOtherPaymentMethod = false;
       }
     }
+  },
+  methods: {
+    atConfirm() {
+      this.$router.push('/confirm');
+    }
   }
 }
 </script>
@@ -58,23 +63,23 @@ export default {
           <span class="star-icon">⭐</span>
         </td>
       </tr>
-    <tr>
-      <td colspan="2">
-        <div class="payment-method">
-          <span>Método de Pago:</span>
-          <select v-model="selectedOption" class="styled-select">
-            <option v-for="option in options" :key="option" :value="option">{{ option }}</option>
-          </select>
-        </div>
-      </td>
-    </tr>
-    <tr v-if="showOtherPaymentMethodModal">
-      <td colspan="2">
-        <OtherPaymentMethod />
-      </td>
-    </tr>
+      <tr>
+        <td colspan="2">
+          <div class="payment-method">
+            <span>Método de Pago:</span>
+            <select v-model="selectedOption" class="styled-select">
+              <option v-for="option in options" :key="option" :value="option">{{ option }}</option>
+            </select>
+          </div>
+        </td>
+      </tr>
+      <tr v-if="showOtherPaymentMethodModal">
+        <td colspan="2">
+          <OtherPaymentMethod/>
+        </td>
+      </tr>
     </table>
-    <button class="request-trip-button">Solicitar viaje</button>
+    <button @click.prevent="atConfirm" class="request-trip-button">Solicitar viaje</button>
   </div>
 </template>
 
@@ -85,19 +90,24 @@ export default {
   align-items: center;
   justify-content: center;
 }
+
 .travel-info-card table td {
   text-align: center;
 }
+
 .auto-image {
   width: 70px;
   height: auto;
 }
+
 .driver-name {
   margin-right: 10px;
 }
+
 .star-icon {
   margin-left: 5px;
 }
+
 .request-trip-button {
   background-color: #39BFBF;
   border: none;

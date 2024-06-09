@@ -50,6 +50,7 @@ export default {
     <div class="input-area">
       <input type="text" v-model="nuevoMensaje" placeholder="Escribe un mensaje..." />
       <button @click="enviarMensaje">Enviar</button>
+      <button class="cancel-button" @click="$router.go(-1)">Cancelar</button>
     </div>
   </div>
 </template>

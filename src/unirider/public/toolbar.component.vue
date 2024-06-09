@@ -11,17 +11,17 @@ export default {
 
 <template>
   <nav class="toolbar">
-      <div class="logo">
+    <div class="logo">
       <h2 class="start"><router-link to="/home">UniRider</router-link></h2>
-      </div>
-      <div class="nav-links">
+    </div>
+    <div class="nav-links">
       <a><router-link to="/services">Servicio</router-link></a>
       <a><router-link to="/plans">Planes</router-link></a>
       <a><router-link to="/maps">Mapa</router-link></a>
-      <a><router-link to="/reserve">Reserva</router-link></a>
+      <a><router-link to="/record">Historial</router-link></a>
       <a><i class="fa fa-bell"></i></a> <!-- Icono de campana (notificaciones) -->
       <a><img :src="userPhoto" alt=" "></a>
-      </div>
+    </div>
   </nav>
 </template>
 

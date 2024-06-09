@@ -1,7 +1,13 @@
 <script>
-  export default {
-    name: 'PremiumStudentCard',
+export default {
+  name: 'PremiumStudentCard',
+  methods:{
+    onAggregateNewCard() {
+      console.log("Login user");
+      this.$router.push('/new-card');
+    }
   }
+}
 </script>
 
 <template>
@@ -26,7 +32,7 @@
         <li>Atención Al Cliente Prioritaria</li>
       </ul>
       <div class="button-card">
-        <button>Comprar</button>
+        <button @click.prevent="onAggregateNewCard">Comprar</button>
       </div>
     </div>
   </div>

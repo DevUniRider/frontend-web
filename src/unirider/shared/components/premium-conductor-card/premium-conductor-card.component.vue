@@ -1,7 +1,14 @@
 <script>
-  export default {
-    name:'PremiumConductorCard',
+export default {
+  name:'PremiumConductorCard',
+  methods:{
+    onAggregateNewCard() {
+      console.log("Login user");
+      this.$router.push('/new-card');
+    }
   }
+
+}
 </script>
 
 <template>
@@ -22,7 +29,7 @@
         <li>Acceso A Eventos Especiales Para Miembros Premium</li>
       </ul>
       <div class="button-card">
-        <button>Comprar</button>
+        <button @click.prevent="onAggregateNewCard">Comprar</button>
       </div>
     </div>
   </div>

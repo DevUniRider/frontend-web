@@ -20,6 +20,9 @@ export default {
 
       event.target.value = formattedValue;
     },
+    sumbitForm() {
+      this.$router.push('/confirm');
+    }
   }
 }
 </script>
@@ -27,7 +30,7 @@ export default {
 <template>
   <div class="payment-form">
     <h2>Pago con Tarjeta</h2>
-    <form action="#" method="POST">
+    <form @submit.prevent="sumbitForm" method="POST">
       <div class="form-group">
         <label for="card-number">Número de Tarjeta</label>
         <input type="text" id="card-number" name="card-number" required @input="formatCardNumber">
@@ -72,24 +75,29 @@ export default {
   font-size: 24px;
   text-align: center;
 }
+
 .form-group {
   margin-bottom: 15px;
 }
+
 .form-group label {
   display: block;
   margin-bottom: 5px;
   font-weight: bold;
 }
+
 .form-group input {
   width: 100%;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
 }
+
 .form-group input:focus {
   border-color: #007bff;
   outline: none;
 }
+
 .btn {
   background-color: #007bff;
   color: #ffffff;
@@ -100,6 +108,7 @@ export default {
   cursor: pointer;
   font-size: 16px;
 }
+
 .btn:hover {
   background-color: #0056b3;
 }

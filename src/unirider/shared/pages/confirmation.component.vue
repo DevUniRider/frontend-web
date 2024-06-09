@@ -15,6 +15,11 @@ export default {
       driverRating: 4.5,
       price: 20
     }
+  },
+  methods: {
+    atQualify() {
+      this.$router.push('/qualify');
+    }
   }
 }
 </script>
@@ -31,7 +36,8 @@ export default {
         :driverRating="driverRating"
         :price="price"
     />
-    <router-link to="/maps/chat" class="chat-button">Acceder al chat</router-link>
+    <router-link to="/chat" class="chat-button">Acceder al chat</router-link>
     <button class="cancel-button" @click="$router.go(-1)">Cancelar</button>
+    <button class="cancel-button" @click.prevent="atQualify">Terminar viaje</button>
   </div>
 </template>
