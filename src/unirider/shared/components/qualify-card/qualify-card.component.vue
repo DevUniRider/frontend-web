@@ -1,6 +1,8 @@
 <script>
+import ToolbarComponent from "../../../public/toolbar.component.vue";
 export default {
   name: "qualify-card",
+  components: {ToolbarComponent},
   data() {
     return {
       selectedButtonSection1: null,
@@ -82,7 +84,9 @@ export default {
 </script>
 
 <template>
+  <toolbarComponent/>
   <main class="main-container">
+
     <div class="qualify-card">
       <h2>Califica a tu conductor</h2>
       <div class="star-rating-container">
@@ -129,6 +133,7 @@ export default {
 }
 
 .qualify-card {
+  margin-top: 70px;
   background-color: black;
   color: white;
   padding: 20px;
