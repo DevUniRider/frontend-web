@@ -77,7 +77,7 @@ export default {
             :estrella="viaje.estrella"
         />
       </div>
-      <button class="btn-salir" @click="salir">Salir</button>
+      <button class="btn-salir" @click="$router.go(-1)">Salir</button>
     </div>
   </div>
 </template>
