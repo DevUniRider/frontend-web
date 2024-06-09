@@ -10,13 +10,25 @@ import UniRiderServices from "../unirider/shared/pages/UniRider-Services.vue";
 import SubscriptionCards from "../unirider/shared/pages/subscription-cards.component.vue";
 import RecordView from "../unirider/shared/pages/record-view.vue";
 import OtherPaymentMethodComponent from "../unirider/shared/components/other-payment-method-card/other-payment-method.component.vue";
+import confirmation from "../unirider/shared/pages/confirmation.component.vue";
+import ChatUser from "../unirider/shared/pages/chat-user.vue";
+
 const routes = [
     { path: '/', component: LoginUser },
     { path: '/create', component: RegisterUser },
     { path: '/verify', component: ChooseUser },
     { path: '/home', name: 'Home', component: Home },
     { path: '/main', name:'main', component: ToolbarComponent },
-    { path: '/maps', component: MapsPage },
+    { path: '/maps', component: MapsPage,
+        children: [
+            {
+                path: '/chat', component: ChatUser
+            },
+            {
+                path: '/confirm', component: confirmation
+            }
+        ]
+    },
     { path: '/qualify', component: QualifyCard },
     { path: '/services', component: UniRiderServices },
     { path: '/plans', component: SubscriptionCards},

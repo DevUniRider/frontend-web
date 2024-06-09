@@ -10,6 +10,7 @@ import 'primevue/resources/themes/aura-light-green/theme.css';
 import InputText from "primevue/inputtext";
 import Panel from "primevue/panel";
 import Button from "primevue/button";
+import Card from "primevue/card";
 
 createApp(App)
     .use(router)
@@ -18,4 +19,5 @@ createApp(App)
     .component('pv-input-text', InputText)
     .component('pv-panel', Panel)
     .component('pv-button', Button)
+    .component('pv-card', Card)
     .mount('#app')
