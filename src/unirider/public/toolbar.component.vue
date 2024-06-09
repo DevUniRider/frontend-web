@@ -19,6 +19,7 @@ export default {
       <a><router-link to="/plans">Planes</router-link></a>
       <a><router-link to="/maps">Mapa</router-link></a>
       <a><router-link to="/record">Historial</router-link></a>
+      <a><router-link to="/">Cerrar Sesion</router-link></a>
       <a><i class="fa fa-bell"></i></a> <!-- Icono de campana (notificaciones) -->
       <a><img :src="userPhoto" alt=" "></a>
     </div>
