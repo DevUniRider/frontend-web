@@ -1,11 +1,10 @@
 export class User {
-    userName;
-
-    constructor(userName) {
-        this.userName = userName;
+    constructor(name='',email='', password='',plan='') {
+        this.email=email;
+        this.password=password;
+        this.plan = plan;
+        this.name= name;
     }
 
-    get usernameUniDriver() {
-        return this.userName == null ? "Unknown" : `${this.userName}`.trim();
-    }
+
 }

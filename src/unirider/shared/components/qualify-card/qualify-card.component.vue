@@ -89,7 +89,7 @@ export default {
 
     <div class="qualify-card">
       <h2>Califica a tu conductor</h2>
-      <div class="star-rating-container">
+      <div class="star-rating-container" @submit.prevent="submitComment">
         <span v-for="starIndex in 5" :key="starIndex" class="star" @click="setRating(starIndex)" :class="{ 'active': starIndex <= rating, 'selected': starIndex <= ratings[userRatingIndex] }">★</span>
       </div>
       <div class="section">
@@ -117,7 +117,7 @@ export default {
         <textarea v-model="comment" @input="limitWords"></textarea>
       </div>
       <div class="submit-section">
-        <button @click="submitComment">Enviar comentario</button>
+        <button @click="goHome">Enviar comentario</button>
         <div v-if="showThankYouMessage" class="thank-you-message">Gracias por tu comentario</div>
       </div>
     </div>

@@ -1,25 +1,42 @@
 <script>
+import { UserApiService } from '../services/user-api.service.js';
 import Welcome from '../components/welcoming/welcome.component.vue'
 
 export default {
-  name: "register-user",
+  name: 'register-user',
   components: {Welcome},
   data() {
     return {
       userName: '',
       email: '',
       password: '',
+      plan: '',
     }
   },
   methods: {
-    onSubmit() {
-      console.log("Registering user");
-      this.$emit("user-registered", {
+    async onSubmit() {
+      if (!this.plan) {
+        alert("Por favor seleccione un plan.");
+        return;
+      }
+
+      const user = {
         userName: this.userName,
         email: this.email,
-        password: this.password
-      });
-      this.$router.push('/verify');
+        password: this.password,
+        plan: this.plan,
+      };
+
+      try {
+        await UserApiService.register(user);
+        this.$router.push('/verify');
+      } catch (error) {
+        console.error("Error during registration:", error);
+        alert("Error durante el registro. Por favor, inténtelo de nuevo.");
+      }
+    },
+    selectPlan(plan) {
+      this.plan = plan;
     }
   }
 }
@@ -29,7 +46,7 @@ export default {
   <div class="Height-Container">
     <div class="register-container">
       <img src="../../../img/logoUniRider.png" class="Logo-UniRider" alt="Logo-UniRider">
-      <h1 class="h1-register">Creacion de cuenta</h1>
+      <h1 class="h1-register">Creación de cuenta</h1>
       <form @submit.prevent="onSubmit">
         <div>
           <label class="label-register" for="userName">Nombre completo</label>
@@ -46,13 +63,19 @@ export default {
           <input class="inputs-register" type="password" id="password" placeholder="Ingrese una contraseña"
                  v-model="password" required/>
         </div>
+        <div class="plan-selection">
+          <button type="button" @click="selectPlan('conductor')" :class="{ selected: plan === 'conductor' }">Conductor
+          </button>
+          <button type="button" @click="selectPlan('pasajero')" :class="{ selected: plan === 'pasajero' }">Pasajero
+          </button>
+        </div>
         <div class="checkbox-group">
-          <input type="checkbox" id="terms">
+          <input type="checkbox" id="terms" required>
           <label for="terms">Acepto los términos y condiciones</label>
         </div>
         <button class="submit-button-register" type="submit">Registrarse</button>
         <div>
-          <label class="label-register"> O registrate con</label>
+          <label class="label-register">O regístrate con</label>
         </div>
         <div class="social-media-icons">
           <svg xmlns="http://www.w3.org/2000/svg" height="40" width="30" viewBox="0 0 488 512"
@@ -77,6 +100,20 @@ export default {
 </template>
 
 <style scoped>
+/* Estilos aquí */
+.plan-selection button {
+  margin: 0.5rem;
+  padding: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.plan-selection button.selected {
+  background-color: #39BFBF;
+  color: white;
+}
+
 html, body {
   height: 100%;
   margin: 0;

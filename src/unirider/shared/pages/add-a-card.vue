@@ -1,37 +1,62 @@
 <script setup>
+import { ref } from 'vue';
+import { useRouter } from 'vue-router';
+import { UserApiService } from '../services/user-api.service.js';
+import { User } from '../model/user.entity.js';
+import { Card } from '../model/card.entity.js';
+
+const router = useRouter();
+
+const cardholder = ref('');
+const cardNumber = ref('');
+const cardMonth = ref('');
+const cardYear = ref('');
+const cardCvc = ref('');
+
+const createUserWithCard = async () => {
+  const user = new User("John Doe", "john.doe@example.com", "password123", "conductor"); // Replace with actual user data
+  const card = new Card(cardholder.value, cardNumber.value, cardMonth.value, cardYear.value, cardCvc.value);
+
+  try {
+    await UserApiService.createUserWithCard(user, card);
+    router.push('/home');
+  } catch (error) {
+    console.error("Error creating user with card:", error);
+  }
+};
 </script>
 
 <template>
   <main class="main-container">
     <section class="main-container__background-section">
-      <img class="tarjeta" src="../../../img/tarjeta.png" >
+      <img class="tarjeta" src="../../../img/tarjeta.png">
     </section>
 
     <section class="main-container__form-section">
-      <form class="form" action="">
+      <form class="form" @submit.prevent="createUserWithCard">
         <label class="form__label" for="cardholder">Cardholder Name</label>
-        <input class="form__input" type="text" name="cardholder" id="cardholder" placeholder="e.g. Jane Appleseed">
+        <input class="form__input" type="text" v-model="cardholder" id="cardholder" placeholder="e.g. Jane Appleseed">
         <div class="form__cardholder--error error"></div>
 
         <label class="form__label" for="cardNumber">Card Number</label>
-        <input class="form__input" type="text" name="cardNumber" id="cardNumber" maxlength="19" placeholder="e.g. 1234 5678 9123 0000">
+        <input class="form__input" type="text" v-model="cardNumber" id="cardNumber" maxlength="19" placeholder="e.g. 1234 5678 9123 0000">
         <div class="form__inputnumber--error error"></div>
 
         <div class="form__date-cvc">
           <label class="form__label" for="cardMonth">Exp. Date (MM/YY)</label>
           <label class="form__label" for="cardCvc">CVC</label>
           <div class="form__date">
-            <input class="form__input" type="text" maxlength="2" name="cardMonth" id="cardMonth" placeholder="MM">
-            <input class="form__input" type="text" maxlength="2" name="cardYear" id="cardYear" placeholder="YY">
+            <input class="form__input" type="text" v-model="cardMonth" maxlength="2" id="cardMonth" placeholder="MM">
+            <input class="form__input" type="text" v-model="cardYear" maxlength="2" id="cardYear" placeholder="YY">
           </div>
-          <input class="form__input" type="text" maxlength="3" name="cardCvc" id="cardCvc" placeholder="e.g. 123">
+          <input class="form__input" type="text" v-model="cardCvc" maxlength="3" id="cardCvc" placeholder="e.g. 123">
           <div class="form__errors-container">
             <div class="form__input-mm--error error"></div>
             <div class="form__input-yy--error error"></div>
           </div>
           <div class="form__input-cvc--error error"></div>
         </div>
-        <button class="form__submit" type="submit" value="Confirm">Crear cuenta</button>
+        <button class="form__submit" type="submit">Crear cuenta</button>
       </form>
     </section>
   </main>

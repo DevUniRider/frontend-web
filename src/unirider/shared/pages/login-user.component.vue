@@ -1,28 +1,36 @@
 <script>
+import {UserApiService} from '../services/user-api.service.js';
+
+
 export default {
   name: "login-user",
-  data(){
-    return{
-      email:'',
-      password: '',
-    }
+  data() {
+    return {
+      email: '',
+      password: ''
+    };
   },
   methods: {
-    onSubmitLogin() {
-      console.log("Login user");
-      this.$emit("user-logged", {
-        email: this.email,
-        password: this.password
-      });
-      this.$router.push('/home');
+    async onSubmitLogin() {
+      try {
+        const users = await UserApiService.login(this.email, this.password);
+        if (users.length > 0) {
+          // Usuario encontrado, redirigir a /home
+          this.$router.push('/home');
+        } else {
+          // Mostrar un mensaje de error o manejar el caso en que el usuario no se encuentre
+          alert("Credenciales incorrectas.");
+        }
+      } catch (error) {
+        console.error("Error during login:", error);
+        alert("Error durante el inicio de sesión. Por favor, inténtelo de nuevo.");
+      }
     },
     onCreateAccount() {
-      console.log("Login user");
       this.$router.push('/create');
     }
   }
 }
-
 </script>
 
 <template>
@@ -30,7 +38,7 @@ export default {
     <div class="container">
       <img src="../../../img/logoUniRider.png" class="logo-UniRider" alt="LogoUniRider">
       <h1 class="h1-login">Bienvenido a UniRider</h1>
-      <form>
+      <form @submit.prevent ="onSubmitLogin">
         <div>
           <label class="label-login" for="email">Correo</label>
           <input class="inputs-login" type="email" id="email" placeholder="Ingrese un correo" v-model="email" required/>
@@ -44,7 +52,7 @@ export default {
           <label>¿Has olvidado tu contraseña?</label>
         </div>
         <div>
-          <button @click.prevent="onSubmitLogin" class="submit-button-login" type="submit">Iniciar Sesión</button>
+          <button class="submit-button-login" type="submit">Iniciar Sesión</button>
         </div>
         <div>
           <button @click.prevent="onCreateAccount" class="submit-button-login" type="submit">Crear cuenta</button>
