@@ -1,6 +1,5 @@
 <script>
-import {UserApiService} from '../services/user-api.service.js';
-
+import { UserApiService } from '../services/user-api.service.js';
 
 export default {
   name: "login-user",
@@ -15,6 +14,10 @@ export default {
       try {
         const users = await UserApiService.login(this.email, this.password);
         if (users.length > 0) {
+          const user = users[0];
+          // Guardar el tipo de usuario en localStorage
+          localStorage.setItem('userType', user.plan);
+
           // Usuario encontrado, redirigir a /home
           this.$router.push('/home');
         } else {

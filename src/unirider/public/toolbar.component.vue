@@ -4,23 +4,47 @@ export default {
   data() {
     return {
       userPhoto: 'ruta/a/la/foto/del/usuario.jpg', // Reemplaza esto con la ruta real a la foto del usuario
+      userType: localStorage.getItem('userType')
     };
   },
+  methods: {
+    goToMap() {
+      if (this.userType === 'conductor') {
+        this.$router.push('/mapsDriver');
+      } else if (this.userType === 'pasajero') {
+        this.$router.push('/maps');
+      } else {
+        alert("Tipo de usuario no reconocido.");
+      }
+    }
+  }
 }
 </script>
 
 <template>
   <nav class="toolbar">
     <div class="logo">
-      <h2 class="start"><router-link to="/home">UniRider</router-link></h2>
+      <h2 class="start">
+        <router-link to="/home">UniRider</router-link>
+      </h2>
     </div>
     <div class="nav-links">
-      <a><router-link to="/profile">Perfil</router-link></a>
-      <a><router-link to="/services">Servicio</router-link></a>
-      <a><router-link to="/plans">Planes</router-link></a>
-      <a><router-link to="/maps">Mapa</router-link></a>
-      <a><router-link to="/record">Historial</router-link></a>
-      <a><router-link to="/">Cerrar Sesion</router-link></a>
+      <a>
+        <router-link to="/profile">Perfil</router-link>
+      </a>
+      <a>
+        <router-link to="/services">Servicio</router-link>
+      </a>
+      <a>
+        <router-link to="/plans">Planes</router-link>
+      </a>
+      <a @click.prevent="goToMap">Mapa</a>
+      <a>
+        <router-link to="/record">Historial</router-link>
+      </a>
+      <a>
+        <router-link to="/">Cerrar Sesion</router-link>
+      </a>
       <a><i class="fa fa-bell"></i></a> <!-- Icono de campana (notificaciones) -->
       <a><img :src="userPhoto" alt=" "></a>
     </div>
@@ -39,6 +63,7 @@ export default {
   align-items: center;
   padding: 10px 20px;
 }
+
 .nav-links a {
   text-decoration: none;
   margin: 0 10px;
@@ -61,6 +86,4 @@ a {
   color: #f0f0f0;
   text-decoration: inherit;
 }
-
-
 </style>
