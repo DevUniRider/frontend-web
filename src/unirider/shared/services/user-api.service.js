@@ -8,10 +8,7 @@ export class UserApiService {
     static async login(email, password) {
         try {
             const response = await http.get('/Users', {
-                params: {
-                    email: email,
-                    password: password
-                }
+                params: { email, password }
             });
             return response.data;
         } catch (error) {
@@ -30,13 +27,22 @@ export class UserApiService {
         }
     }
 
-    static async createUserWithCard(user, card) {
-        user.Card = [card];
+    static async addCard(card) {
         try {
-            const response = await http.post('/Users', user);
+            const response = await http.post('/Cards', card);
             return response.data;
         } catch (error) {
-            console.error("Error during user creation with card:", error);
+            console.error("Error adding card:", error);
+            throw error;
+        }
+    }
+
+    static async addQualify(qualify) {
+        try {
+            const response = await http.post('/Qualify', qualify);
+            return response.data;
+        } catch (error) {
+            console.error("Error adding qualify:", error);
             throw error;
         }
     }

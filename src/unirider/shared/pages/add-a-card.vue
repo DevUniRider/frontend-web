@@ -2,7 +2,6 @@
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 import { UserApiService } from '../services/user-api.service.js';
-import { User } from '../model/user.entity.js';
 import { Card } from '../model/card.entity.js';
 
 const router = useRouter();
@@ -13,15 +12,21 @@ const cardMonth = ref('');
 const cardYear = ref('');
 const cardCvc = ref('');
 
-const createUserWithCard = async () => {
-  const user = new User("John Doe", "john.doe@example.com", "password123", "conductor"); // Replace with actual user data
+const addCard = async () => {
+  const userId = localStorage.getItem('userId'); // Obtener el ID del usuario logeado desde localStorage
+  if (!userId) {
+    console.error("User ID not found in localStorage");
+    return;
+  }
+
   const card = new Card(cardholder.value, cardNumber.value, cardMonth.value, cardYear.value, cardCvc.value);
+  card.userId = parseInt(userId);
 
   try {
-    await UserApiService.createUserWithCard(user, card);
+    await UserApiService.addCard(card);
     router.push('/home');
   } catch (error) {
-    console.error("Error creating user with card:", error);
+    console.error("Error adding card:", error);
   }
 };
 </script>
@@ -33,7 +38,7 @@ const createUserWithCard = async () => {
     </section>
 
     <section class="main-container__form-section">
-      <form class="form" @submit.prevent="createUserWithCard">
+      <form class="form" @submit.prevent="addCard">
         <label class="form__label" for="cardholder">Cardholder Name</label>
         <input class="form__input" type="text" v-model="cardholder" id="cardholder" placeholder="e.g. Jane Appleseed">
         <div class="form__cardholder--error error"></div>
@@ -56,14 +61,14 @@ const createUserWithCard = async () => {
           </div>
           <div class="form__input-cvc--error error"></div>
         </div>
-        <button class="form__submit" type="submit">Crear cuenta</button>
+        <button class="form__submit" type="submit">Agregar Tarjeta</button>
       </form>
     </section>
   </main>
 </template>
 
 <style scoped>
-
+/* Estilos aquí */
 @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500&display=swap");
 * {
   margin: 0;

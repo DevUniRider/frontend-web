@@ -15,13 +15,10 @@ export default {
         const users = await UserApiService.login(this.email, this.password);
         if (users.length > 0) {
           const user = users[0];
-          // Guardar el tipo de usuario en localStorage
-          localStorage.setItem('userType', user.plan);
-
-          // Usuario encontrado, redirigir a /home
+          localStorage.setItem('userId', user.id); // Guardar el ID del usuario en localStorage
+          localStorage.setItem('userType', user.plan); // Guardar el tipo de usuario en localStorage
           this.$router.push('/home');
         } else {
-          // Mostrar un mensaje de error o manejar el caso en que el usuario no se encuentre
           alert("Credenciales incorrectas.");
         }
       } catch (error) {
@@ -35,6 +32,7 @@ export default {
   }
 }
 </script>
+
 
 <template>
   <div class="full-height-container">
