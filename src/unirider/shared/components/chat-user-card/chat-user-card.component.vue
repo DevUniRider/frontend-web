@@ -27,24 +27,27 @@ export default {
 }
 </script>
 <template>
-  <div class="card">
-    <pv-card>
-      <template #title>
-        {{ nombre }} {{ apellido }}
-        <img :src="foto" alt="Foto de usuario" />
-      </template>
-      <template #subtitle>
-        {{ hora }}
-      </template>
-      <template #content>
-        <p>{{ texto }}</p>
-      </template>
-    </pv-card>
-  </div>
+    <div class="card">
+      <pv-card>
+        <template #title>
+          {{ nombre }} {{ apellido }}
+          <!--img :src="foto" alt="Foto de usuario" />-->
+        </template>
+        <template #subtitle>
+          {{ hora }}
+        </template>
+        <template #content>
+          <p>{{ texto }}</p>
+        </template>
+      </pv-card>
+    </div>
+
 </template>
 <style scoped>
+
 .card {
-  width: 60%;
-  margin-bottom: 5px;
+  width: 30%;
+  height:100px;
+  margin-bottom: 100px;
 }
 </style>

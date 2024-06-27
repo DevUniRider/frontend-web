@@ -1,6 +1,7 @@
 <script>
 import MapImage from '../../../../assets/mapa.png';
 
+
 export default {
   name: 'MapCard',
   data() {
@@ -15,7 +16,7 @@ export default {
     <div class="search-bar">
       <input type="search" placeholder="Buscar..."/>
     </div>
-    <img class="map-image" :src="mapImage" alt="Mapa"/>
+    <img class="map-image" :src="mapImage" alt="Mapa de la zona"/>
   </div>
 </template>
 

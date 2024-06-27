@@ -11,13 +11,23 @@ import InputText from "primevue/inputtext";
 import Panel from "primevue/panel";
 import Button from "primevue/button";
 import Card from "primevue/card";
+import Password from 'primevue/password';
+
+import { GoogleMap } from 'vue3-google-map'
 
 createApp(App)
     .use(router)
     .use(PrimeVue)
     .use(i18n)
+    .use(GoogleMap, {
+        load: {
+            key: 'AIzaSyBWlzfRtgnZqbDJfUg0mvaSaumzuwhVHYI',
+            libraries: ['places'],
+        },
+    })
     .component('pv-input-text', InputText)
     .component('pv-panel', Panel)
     .component('pv-button', Button)
     .component('pv-card', Card)
+    .component('pv-password', Password)
     .mount('#app')

@@ -57,3 +57,17 @@ export default {
     </table>
   </div>
 </template>
+
+<style scoped>
+.travel-info-card {
+
+  color: white;
+  background-color: black;
+  max-width: 60%;
+  margin:  auto;
+  margin-top: 20px;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+}
+</style>

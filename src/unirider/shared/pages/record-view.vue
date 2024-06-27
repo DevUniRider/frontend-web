@@ -10,42 +10,20 @@ export default {
   },
   data() {
     return {
-      listaViajes: [
-        {
-          nombre: 'Juan Valera',
-          destino: 'SIsidro',
-          origen: 'S.Miguel',
-          duracion: '7 min',
-          estrellas: 5,
-          estatus: 'Completado',
-          fecha: '2024-05-01',
-          precio: 10,
-          foto: "src/assets/FotoPerfil.png",
-          estrella: "src/assets/estrella.png"
-        },
-        {
-          nombre: 'Viaje de negocios',
-          destino: 'Monterrico',
-          origen: 'S.Miguel',
-          duracion: '3 min',
-          estrellas: 4,
-          estatus: 'Cancelado',
-          fecha: '2024/05/1',
-          precio: 20,
-          foto: "src/assets/FotoPerfil.png",
-          estrella: "src/assets/estrella.png"
-        },
-
-      ]
+      listaViajes: []
     };
+  },
+  created() {
+    fetch('src/unirider/public/viajes.json')
+        .then(response => response.json())
+        .then(data => {
+          this.listaViajes = data;
+        });
   },
   methods: {
     esHoy(fechaViaje) {
-      // Obtener la fecha actual en formato ISO (YYYY-MM-DD)
       const fechaHoy = new Date().toISOString().split('T')[0];
-      // Formatear la fecha del viaje al formato ISO
       const fechaFormateada = fechaViaje.includes('/') ? fechaViaje.split('/').reverse().join('-') : fechaViaje;
-      // Si la fecha del viaje coincide con la fecha actual, retorna true
       return fechaFormateada === fechaHoy;
     }
   }

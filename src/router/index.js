@@ -13,6 +13,7 @@ import OtherPaymentMethodComponent from "../unirider/shared/components/other-pay
 import confirmation from "../unirider/shared/pages/confirmation.component.vue";
 import ChatUser from "../unirider/shared/pages/chat-user.vue";
 import NewCard from "../unirider/shared/pages/add-a-card.vue";
+import ProfileUser from "../unirider/shared/pages/Profile-user.component.vue";
 
 
 const routes = [
@@ -30,6 +31,7 @@ const routes = [
     { path: '/record', component: RecordView},
     { path: '/OtherMethodpayment', component: OtherPaymentMethodComponent},
     {path: '/new-card', component: NewCard },
+    {path: '/profile', component: ProfileUser },
 
 ]
 

@@ -15,6 +15,7 @@ export default {
       <h2 class="start"><router-link to="/home">UniRider</router-link></h2>
     </div>
     <div class="nav-links">
+      <a><router-link to="/profile">Perfil</router-link></a>
       <a><router-link to="/services">Servicio</router-link></a>
       <a><router-link to="/plans">Planes</router-link></a>
       <a><router-link to="/maps">Mapa</router-link></a>
